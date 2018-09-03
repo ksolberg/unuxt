@@ -29,3 +29,7 @@ Basic workflow is like this:
 **npm run generate** to create static html site
 
 **npm run dev** to start local development webserver with hot module reloading, etc.
+
+Umbraco login is:
+me@unuxt.code
+1234567890
