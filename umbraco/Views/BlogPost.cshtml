@@ -1,0 +1,11 @@
+﻿@inherits UmbracoViewPage<BlogPost>
+@{
+	Layout = "Master.cshtml";
+
+	var model = new ResponseModel {
+		Component = Model.DocumentTypeAlias, 
+		Model = Model.Name
+	};
+	
+}
+@Html.Raw(JsonConvert.SerializeObject(model))

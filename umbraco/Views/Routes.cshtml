@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Response.ContentType = "application/json";
+
+    var urls = Model.AncestorOrSelf(1).DescendantsOrSelf().Select(_ => _.Url);
+    var json = JsonConvert.SerializeObject(urls); 
+}
+
+@Html.Raw(json)

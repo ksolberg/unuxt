@@ -1,0 +1,41 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Response.ContentType = "application/json";
+
+    var dataItems = Model.AncestorOrSelf(1).DescendantsOrSelf().Select(_ => new DataItem(_));
+    var json = JsonConvert.SerializeObject(dataItems);
+}
+
+@Html.Raw(json)
+
+@functions
+{
+    public class DataItem
+    {
+        public string Url { get; set; }
+        
+        public string Component { get; set; }
+        
+        public List<Property> Properties { get; set; }
+
+        public DataItem(IPublishedContent content)
+        {
+            Url = content.Url;
+            
+            Component = content.DocumentTypeAlias;
+            
+            Properties = new List<Property>();
+            
+            Properties.Add(new Property { Alias = "foo", Value = "Bar" });
+            
+        }
+    }
+    
+    public class Property
+    {
+        public string Alias { get; set; }
+        
+        public string Value { get; set; }
+    }
+}
+
