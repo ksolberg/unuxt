@@ -2,10 +2,8 @@
 @{
 	Layout = "Master.cshtml";
 
-	var model = new ResponseModel {
-		Component = Model.DocumentTypeAlias, 
-		Model = Model.Name
-	};
-	
+	var dataItem = new DataItem(Model);
+
+	var json = JsonConvert.SerializeObject(dataItem);	
 }
-@Html.Raw(JsonConvert.SerializeObject(model))
+@Html.Raw(json)

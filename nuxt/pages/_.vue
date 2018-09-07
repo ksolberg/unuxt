@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <div :is="component" :model="model"></div>
-    </div>
+    <div v-if="content.contentTypeAlias" 
+         :is="content.contentTypeAlias" 
+         :content="content"></div>
 </template>
 
 <script>
+
+import axios from 'axios'
 
 import home from '../components/home.vue'
 import blog from '../components/blog.vue'
@@ -18,13 +20,19 @@ export default {
         blogPost
     },
 
-    computed: {
-        component () {
-            return this.$store.getters.component(this.$router.currentRoute.path)
-        },
-        model () {
-            return this.$store.getters.model(this.$router.currentRoute.path)
+    asyncData ({ app, route, payload }) {
+
+        if (payload) {
+            return { 
+                content: payload 
+            }
         }
+
+        return axios.get('http://localhost:10702' + route.path).then(response => {           
+            return {
+                content: response.data
+            }
+        })
     }
 }
 </script>

@@ -39,7 +39,16 @@ module.exports = {
   },
   generate: {
     routes: function () {
-      return axios.get('http://localhost:10702/routes').then(res => res.data)      
+      return axios.get('http://localhost:10702/data').then(response => {
+        const routes = []
+        response.data.forEach(content => {
+          routes.push({
+            route: content.url,
+            payload: content
+          })
+        })
+        return routes
+      })      
     }
   }
 }
