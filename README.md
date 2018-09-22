@@ -7,11 +7,6 @@ It contains two parts:
 * Umbraco backoffice website with api for routes and content
 * Nuxt for hosting local dev server with hot module reloading and for static site generation
 
-Umbraco endpoints:
-
-* /routes
-* /data
-
 Nuxt important parts:
 
 nuxt.config.js \ routes\generate
