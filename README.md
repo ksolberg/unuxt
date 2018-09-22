@@ -15,16 +15,8 @@ Umbraco endpoints:
 Nuxt important parts:
 
 nuxt.config.js \ routes\generate
-store\index.js
 pages\_.vue
 components\*
-
-Basic workflow is like this:
-
-* vuex store onServerInit dispatches async load action to populate store with ALL content from cms
-* (generate only) gets all routes to visit from umbraco /routes in nuxt.config.js
-* _.vue catch all vue router route reads component/data from store with router path as parameter
-* dynamic component is loaded and model prop is passed
 
 **npm run generate** to create static html site
 
